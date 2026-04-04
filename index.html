@@ -35,6 +35,11 @@
           <li class="nav-item"><a class="nav-link" href="#pengalaman">Pengalaman</a></li>
           <li class="nav-item"><a class="nav-link" href="#organisasi">Organisasi</a></li>
           <li class="nav-item"><a class="nav-link" href="#skills">Skills & Hobi</a></li>
+          <li class="nav-item d-flex align-items-center ms-lg-3 mt-2 mt-lg-0">
+            <span id="realtime-clock" class="badge badge-gradient fw-bold px-3 py-2 fs-6 mb-2 mb-lg-0">
+              <i class="far fa-clock me-1"></i> <span id="clock-time">00:00:00</span>
+            </span>
+          </li>
         </ul>
       </div>
     </div>
@@ -390,6 +395,23 @@
         navbar.classList.remove('scrolled');
       }
     });
+
+    // Realtime Clock
+    function updateClock() {
+      const now = new Date();
+      let hours = now.getHours().toString().padStart(2, '0');
+      let minutes = now.getMinutes().toString().padStart(2, '0');
+      let seconds = now.getSeconds().toString().padStart(2, '0');
+      
+      const timeString = `${hours}:${minutes}:${seconds}`;
+      const clockElement = document.getElementById('clock-time');
+      if (clockElement) {
+        clockElement.textContent = timeString;
+      }
+    }
+    
+    setInterval(updateClock, 1000);
+    updateClock();
   </script>
 </body>
 
